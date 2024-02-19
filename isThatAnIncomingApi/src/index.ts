@@ -1,3 +1,5 @@
+import { FloatValueNode } from './../node_modules/graphql/language/ast.d';
+import { float32 } from './../node_modules/flatbuffers/ts/utils';
 import express from 'express';
 import http from 'http';
 import cookieParser from 'cookie-parser';
@@ -64,6 +66,8 @@ const typeDefs = `#graphql
     windGusts: Float
   }
 
+
+
   type Weather {
     current: Current
     forecast: [Forecast]
@@ -71,16 +75,27 @@ const typeDefs = `#graphql
 
   type Comparison {
     location1: Geocode
-    Weather1: Weather
+    weather1: Weather
     location2: Geocode
-    Weather2: Weather
-    comparison: String
+    weather2: Weather
+    prediction: String
+  }
+
+  input GeoInput {
+    name: String
+    lat: Float
+    long: Float
+  }
+  
+  input SurveyInput {
+    temp: Float
+    description: String
   }
 
   type Query {
     location(name: String, lat: Float, long: Float): [Geocode]
     weather(lat: Float, long: Float): Weather
-    comparison: Comparison
+    comparison(loc1: GeoInput, loc2: GeoInput, survey: SurveyInput): Comparison
   }
 `;
 
