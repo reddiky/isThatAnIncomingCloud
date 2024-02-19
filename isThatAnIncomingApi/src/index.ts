@@ -1,0 +1,110 @@
+import express from 'express';
+import http from 'http';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+
+import resolvers from './resolvers/index.js';
+import indexRouter from './routes/index.js';
+import weatherRouter from './routes/weather.js';
+import { ApolloServer } from '@apollo/server';
+import { expressMiddleware } from '@apollo/server/express4';
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+import cors from 'cors';
+
+
+const app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+app.use('/', indexRouter);
+app.use('/weather', weatherRouter);
+
+const httpServer = http.createServer(app);
+
+interface MyContext {
+  token?: String;
+}
+
+const typeDefs = `#graphql
+  type Geocode {
+    name: String,
+    admin1: String
+    admin2: String
+    latitude: String
+    longitude: String
+  }
+
+  type Current {
+    time: String
+    temperature: Float
+    precipitation: Float
+    rain: Float
+    showers: Float
+    snowfall: Float
+    weatherCode: Float
+    weatherDescription: String
+    cloudCover: Float
+    windSpeed: Float
+    windGusts: Float
+  }
+
+  type Forecast {
+    time: String
+    weatherCode: Int
+    weatherDescription: String
+    maxTemp: Float
+    minTemp: Float
+    precipitationSum: Float
+    precipitationLength: Float
+    precipitationChance: Float
+    windSpeed: Float
+    windGusts: Float
+  }
+
+  type Weather {
+    current: Current
+    forecast: [Forecast]
+  }
+
+  type Comparison {
+    location1: Geocode
+    Weather1: Weather
+    location2: Geocode
+    Weather2: Weather
+    comparison: String
+  }
+
+  type Query {
+    location(name: String, lat: Float, long: Float): [Geocode]
+    weather(lat: Float, long: Float): Weather
+    comparison: Comparison
+  }
+`;
+
+
+
+const server = new ApolloServer<MyContext>({
+  typeDefs,
+  resolvers,
+  plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+});
+
+await server.start();
+
+app.use(
+  '/weather',
+  cors<cors.CorsRequest>(),
+  express.json(),
+  expressMiddleware(server, {
+    context: async ({ req }) => ({ token: req.headers.token }),
+  }),
+);
+
+
+await new Promise<void>((resolve) => httpServer.listen({ port: 4000 }, resolve));
+console.log(`🚀 Server ready at http://localhost:4000/`);
+
+export default app;
