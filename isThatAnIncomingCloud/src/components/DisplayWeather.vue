@@ -19,8 +19,8 @@
     methods: {
       iconImage(weatherCode) {
         let img = weatherInterpretationCodes[`${weatherCode}`].icon
-        const imgUrl = new URL(`@/assets/icons/${img}`, import.meta.url).href;
-        return imgUrl
+        const path = new URL(`$`, import.meta.url);
+        return `${path}/${img}`
       }
     },
   }
