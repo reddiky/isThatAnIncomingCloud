@@ -4,7 +4,7 @@ import { createApolloProvider } from '@vue/apollo-option'
 // HTTP connection to the API
 const httpLink = createHttpLink({
   // You should use an absolute URL here
-  uri: 'https://isthatanincoming.cloud/weather',
+  uri: 'https://www.isthatanincoming.cloud/weather',
   fetchOptions: {
     mode: 'no-cors'
 }
