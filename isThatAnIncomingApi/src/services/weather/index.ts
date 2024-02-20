@@ -21,7 +21,7 @@ async function getWeather(lat, long) {
 	const url = 'https://api.open-meteo.com/v1/forecast';
 	const responses = await fetchWeatherApi(url, params);
 	const response = responses[0];
-
+	console.log(response, 'response!!!')
 	const utcOffsetSeconds = response.utcOffsetSeconds();
 
 	const current = response.current()!;

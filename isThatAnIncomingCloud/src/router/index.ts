@@ -1,5 +1,6 @@
+import { useSurveyStore } from './../stores/index';
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import SurveyView from '../views/SurveyView.vue'
 import pinia from "@/stores";
 import { useLocationStore } from '@/stores/index'
 
@@ -9,35 +10,32 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: SurveyView
     },
     {
-      path: '/survey',
-      name: 'survey',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/SurveyView.vue')
+      path: '/location',
+      name: 'location',
+      beforeEnter(to, from, next) {
+        const survey = useSurveyStore(pinia);
+        if (survey.temp === null) {
+          console.log('temp null going home')
+          next({ path: '/' })
+        }
+        next()
+      },
+      component: () => import('../views/LocationView.vue')
     },
     {
       path: '/weather',
       name: 'weather',
       beforeEnter(to, from, next) {
         const location = useLocationStore(pinia);
-        console.log(location, '!!!!!!!!!')
         if (location.primaryLocation === null || location.secondaryLocation === null) {
+          console.log('location null going home')
           next({ path: '/' })
         }
         next()
       },
-      component: () => import('../views/WeatherView.vue')
-    },
-    {
-      path: '/comparison',
-      name: 'comparison',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/WeatherComparisonView.vue')
     }
   ]

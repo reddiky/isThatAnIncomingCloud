@@ -23,20 +23,17 @@ export const useLocationStore = defineStore('locations', {
   },
 })
 
-export const useWeatherStore = defineStore('weatherStore', {
+export const useSurveyStore = defineStore('surveyStore', {
   state: () => {
     return { 
-      primaryWeather: null,
-      secondaryWeather: null
+      temp: null,
+      description: null
     }
   },
   actions: {
-    defineWeather(weather: any, num: number) {
-      if (num == 1) {
-        this.primaryWeather = weather;
-      } else {
-        this.secondaryWeather = weather;
-      }
+    saveSurvey(temp: any, description: any) {
+      this.temp = temp;
+      this.description = description;
     },
   },
 })
