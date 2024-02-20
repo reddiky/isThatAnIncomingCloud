@@ -104,7 +104,7 @@
 </script>
 
 <template>
-  <div class="mb-6">
+  <div class="compare mb-6">
     <v-skeleton-loader class='pa-2' min-width="400" type="card" v-if="comparison === null"></v-skeleton-loader>
     <DisplayWeather  class='pa-2' v-if="comparison !== null" :weather="comparison?.weather1" :location="primaryLocation" />
     <v-card class="bg-surface-variant" min-width="300">
@@ -135,7 +135,7 @@
 }
 
 @media (min-width: 1024px) {
-  .current {
+  .compare {
     min-width: 512px;
   }
 }
