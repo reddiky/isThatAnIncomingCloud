@@ -105,7 +105,7 @@ const server = new ApolloServer<MyContext>({
 });
 
 await server.start();
-
+app.use(cors());
 app.use(
   '/weather',
   cors(),
