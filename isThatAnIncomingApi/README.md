@@ -1,7 +1,14 @@
 # isThatAnIncomingApi
 
-More to come, but this is a placeholder readme for `isThatAnIncomingCloud` a project I am working on over Presidents Day.
+This is the backend server for isThatAnIncomingCloud
+
+### Run Locally
+
+```sh
+npm run install
+npm run start
+```
 
 ## This wont work locally
 
-chat gpt functionality won't work locally without my api key ¯\_(ツ)\_/¯
+ChatGPT functionality won't work locally without my api key ¯\_(ツ)\_/¯

@@ -1,6 +1,6 @@
 # isThatAnIncomingCloud
 
-Frontend
+Frontend for isThatAnIncoming Cloud. Right now the tests will fail spectacularly, but building and running locally will work.
 
 ## Project Setup
 
