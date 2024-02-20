@@ -3,9 +3,7 @@ import compareWeather from './ai.js';
 
 async function compareLocations(loc1, loc2, survey) {
   const weather1 = await getWeather(loc1.lat, loc1.long)
-  console.log(weather1, 'weather1')
   const weather2 = await getWeather(loc2.lat, loc2.long)
-  console.log(weather2, 'weaweather2ther1')
 
   const response = await compareWeather(loc1, loc2, weather1, weather2, survey);
   return {     

@@ -5,7 +5,6 @@ import Geocode from './interfaces'
 async function getGeocode(name1: string, lat: number, long: number): Promise<Array<Geocode>> {
     const url = `https://geocoding-api.open-meteo.com/v1/search?name=${name1}&count=10&language=en&format=json`
     try {
-      console.log(name1, lat, long)
       const response = await fetch(url);
       let data: any;
       data = await response.json();
