@@ -25,7 +25,7 @@ export default {
 </script>
 
 <template>
-  <div class="home d-flex align-center justify-center">
+  <div class="home">
         <LocationQuery num="1" class="pa-2 ma-2"/>
         <LocationQuery num="2" class="pa-2 ma-2"/>
         <v-btn

@@ -7,14 +7,14 @@ export default {
 </script>
 
 <template>
-  <div class="home d-flex align-center justify-center">
+  <div class="survey d-flex align-center justify-center">
     <WeatherSurvey  class="pa-2 ma-2"/>
   </div>
 </template>
 
 <style>
 @media (min-width: 1024px) {
-  .home {
+  .survey {
     min-height: 100vh;
     display: flex;
     align-items: center;
