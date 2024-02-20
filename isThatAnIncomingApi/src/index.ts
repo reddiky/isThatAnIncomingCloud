@@ -109,7 +109,7 @@ app.use(cors());
 app.use(
   '/weather',
   cors(),
-  cors<cors.CorsRequest>({ origin: ['https://isthatanincoming.cloud', 'https://reddiky.github.io', 'https://reddiky.github.io/', 'https://reddiky.github.io/isThatAnIncomingCloud', 'https://reddiky.github.io/isThatAnIncomingCloud/location'] }),
+  cors<cors.CorsRequest>({ origin: ['https://www.isthatanincoming.cloud', 'https://isthatanincoming.cloud', 'https://reddiky.github.io', 'https://reddiky.github.io/', 'https://reddiky.github.io/isThatAnIncomingCloud', 'https://reddiky.github.io/isThatAnIncomingCloud/location'] }),
   express.json(),
   expressMiddleware(server, {
     context: async ({ req }) => ({ token: req.headers.token }),
