@@ -1,4 +1,4 @@
-import{m as B,u as b,_ as k,c as y,a as _,w as e,b as v,r as l,o as r,d as t,e as c,F as W,f as P,t as s,g as R}from"./index-Cq2GGslv.js";import{g as T}from"./index-KacCrrCc.js";const j={props:["num"],data(){return{skipQuery:!0,valid:!1,locationName:"",location:{},locations:[],lat:null,long:null,displayLocation:!1,locationNameRules:[a=>a?!0:"location is required.",a=>(a==null?void 0:a.length)<=15?!0:"location must be less than 15 characters."]}},apollo:{locations:{query:T`query location($name: String, $lat: Float, $long: Float) {
+import{m as B,u as b,_ as k,c as y,a as _,w as e,b as v,r as l,o as r,d as t,e as c,F as W,f as P,t as s,g as R}from"./index-CrEXYwK0.js";import{g as T}from"./index-CfRsfGzq.js";const j={props:["num"],data(){return{skipQuery:!0,valid:!1,locationName:"",location:{},locations:[],lat:null,long:null,displayLocation:!1,locationNameRules:[a=>a?!0:"location is required.",a=>(a==null?void 0:a.length)<=15?!0:"location must be less than 15 characters."]}},apollo:{locations:{query:T`query location($name: String, $lat: Float, $long: Float) {
           location(name: $name, lat: $lat, long: $long) {
             name
             admin1
