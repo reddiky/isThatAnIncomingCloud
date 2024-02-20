@@ -4,7 +4,7 @@ import { createApolloProvider } from '@vue/apollo-option'
 // HTTP connection to the API
 const httpLink = createHttpLink({
   // You should use an absolute URL here
-  uri: 'https://isThatAnIncoming.cloud/weather',
+  uri: 'https://isthatanincoming.cloud/weather',
 })
 
 // Cache implementation
