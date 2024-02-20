@@ -107,7 +107,7 @@
   <div class="compare mb-6">
     <v-skeleton-loader class='pa-2' min-width="400" type="card" v-if="comparison === null"></v-skeleton-loader>
     <DisplayWeather  class='pa-2' v-if="comparison !== null" :weather="comparison?.weather1" :location="primaryLocation" />
-    <v-card class="bg-surface-variant" min-width="300">
+    <v-card class="bg-surface-variant" >
       <v-card-title>
         Cloudy, your virtual travel assistant recommends 
       </v-card-title>
@@ -122,8 +122,8 @@
 </template>
 
 <style scoped>
-.current {
-  min-width: 512px;
+.compare {
+  display:inline;
 }
 
 .v-list-item {
@@ -135,8 +135,8 @@
 }
 
 @media (min-width: 1024px) {
-  .compare {
-    min-width: 512px;
+  .compare{
+    display:flex;
   }
 }
 </style>
