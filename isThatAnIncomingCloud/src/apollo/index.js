@@ -5,9 +5,6 @@ import { createApolloProvider } from '@vue/apollo-option'
 const httpLink = createHttpLink({
   // You should use an absolute URL here
   uri: 'https://www.isthatanincoming.cloud/weather',
-  fetchOptions: {
-    mode: 'no-cors'
-}
 })
 
 // Cache implementation
