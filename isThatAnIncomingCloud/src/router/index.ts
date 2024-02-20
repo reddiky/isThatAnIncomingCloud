@@ -1,6 +1,8 @@
 import { useSurveyStore } from './../stores/index';
 import { createRouter, createWebHistory } from 'vue-router'
 import SurveyView from '../views/SurveyView.vue'
+import LocationView from '../views/LocationView.vue'
+import WeatherComparisonView from '../views/WeatherComparisonView.vue'
 import pinia from "@/stores";
 import { useLocationStore } from '@/stores/index'
 
@@ -22,7 +24,7 @@ const router = createRouter({
         }
         next()
       },
-      component: () => import('../views/LocationView.vue')
+      component: LocationView
     },
     {
       path: '/weather',
@@ -34,7 +36,7 @@ const router = createRouter({
         }
         next()
       },
-      component: () => import('../views/WeatherComparisonView.vue')
+      component: WeatherComparisonView
     }
   ]
 })
