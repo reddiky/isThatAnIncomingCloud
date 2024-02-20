@@ -21,9 +21,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/', indexRouter);
-app.use('/weather', weatherRouter);
-
 const httpServer = http.createServer(app);
 
 interface MyContext {
@@ -118,6 +115,7 @@ app.use(
   }),
 );
 
+app.use('/', indexRouter);
 
 await new Promise<void>((resolve) => httpServer.listen({ port: 4000 }, resolve));
 console.log(`🚀 Server ready at http://localhost:4000/`);
