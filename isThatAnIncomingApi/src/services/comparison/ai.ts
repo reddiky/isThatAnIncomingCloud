@@ -9,7 +9,7 @@ async function compareWeather(loc1, loc2, weather1, weather2, survey) {
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",   
     messages: [
-      { role: "user", content: `I strongly like an average temperature of ${survey.temp} and prefer ${survey.description} days. If its below freezing and raining, that counts as snow. Will I like ${loc1.name}: ${JSON.stringify(weather1)} or ${loc2.name}: ${JSON.stringify(weather2)} better and why?` },
+      { role: "user", content: `I strongly like an average temperature of ${survey.temp} and prefer ${survey.description} days. If its below freezing and raining, that counts as snow. Assume all temperatures are in fahrenheit. Will I like ${loc1.name}: ${JSON.stringify(weather1)} or ${loc2.name}: ${JSON.stringify(weather2)} better and why?` },
     ],
     temperature: 1,
     max_tokens: 256,
