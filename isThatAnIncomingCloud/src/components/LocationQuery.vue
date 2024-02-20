@@ -81,8 +81,8 @@
   <div>
     <v-card
       class="mx-auto"
-      max-width="512"
-      v-if="displayLocation === false"
+      width="512"
+      v-if="displayLocation === false && locations.length === 0"
     >
       <v-card-title>Please submit your location</v-card-title>
       <v-card-text>
@@ -109,7 +109,6 @@
               >
                 <v-text-field
                   v-model="lat"
-                  :counter="10"
                   label="Latitude"
                   hide-details
                   required
@@ -137,7 +136,7 @@
         </v-btn>
       </v-card-actions>
     </v-card>
-    <v-card class="mx-auto" max-width="300" v-if="locations.length > 0 && displayLocation === false" >
+    <v-card class="mx-auto" width=512 v-if="locations.length > 0 && displayLocation === false" >
       <v-list>
         <v-list-subheader >Please select your specific location</v-list-subheader>
 
@@ -155,12 +154,15 @@
     </v-card>
     <v-card
       class="mx-auto"
-      max-width="512"
+      width="512"
       v-if="displayLocation"
     >
       <v-card-title>
-        Location {{num}}: {{location.name}}, {{ location.admin2 }}{{location.admin1 && location.admin2 ? ',' : '' }} {{ location.admin1 }}
+        Location {{num}} 
       </v-card-title>
+      <v-card-subtitle>
+        {{location.name}}, {{ location.admin2 }}{{location.admin1 && location.admin2 ? ',' : '' }} {{ location.admin1 }}
+      </v-card-subtitle>
       <v-card-actions>
         <v-btn
           variant="text"

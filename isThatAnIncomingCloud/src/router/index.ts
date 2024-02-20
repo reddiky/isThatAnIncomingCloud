@@ -18,7 +18,6 @@ const router = createRouter({
       beforeEnter(to, from, next) {
         const survey = useSurveyStore(pinia);
         if (survey.temp === null) {
-          console.log('temp null going home')
           next({ path: '/' })
         }
         next()
@@ -31,7 +30,6 @@ const router = createRouter({
       beforeEnter(to, from, next) {
         const location = useLocationStore(pinia);
         if (location.primaryLocation === null || location.secondaryLocation === null) {
-          console.log('location null going home')
           next({ path: '/' })
         }
         next()

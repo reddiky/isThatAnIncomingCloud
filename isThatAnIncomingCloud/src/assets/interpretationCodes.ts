@@ -3,7 +3,7 @@ const weatherInterpretationCodes = {
   1: { des: 'Mainly clear', icon: 'day.svg' },
   2: { des: 'Partly cloudy', icon: 'cloudy.svg' },
   3: { des: 'Overcast', icon: 'cloudy-day-1.svg' },
-  45: { des: 'Fog', icon: 'cloud-day-2.svg' },
+  45: { des: 'Fog', icon: 'cloudy-day-2.svg' },
   48: { des: 'Depositing rime fog', icon: 'cloudy-day-3.svg' },
   51: { des: 'Light drizzle', icon: 'rainy-1.svg' },
   53: { des: 'Moderate drizzle', icon: 'rainy-2.svg' },

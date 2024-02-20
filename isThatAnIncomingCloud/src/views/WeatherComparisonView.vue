@@ -105,17 +105,17 @@
 
 <template>
   <div class="d-flex justify-space-between mb-6">
-    <v-skeleton-loader class='ma-2 pa-2' type="card" v-if="comparison === null"></v-skeleton-loader>
-    <DisplayWeather  class='ma-2 pa-2' v-if="comparison !== null" :weather="comparison?.weather1" :location="primaryLocation" />
-    <v-card class="bg-surface-variant">
+    <v-skeleton-loader class='pa-2' min-width="400" type="card" v-if="comparison === null"></v-skeleton-loader>
+    <DisplayWeather  class='pa-2' v-if="comparison !== null" :weather="comparison?.weather1" :location="primaryLocation" />
+    <v-card class="bg-surface-variant" min-width="300">
       <v-card-title>
-        Cloudy, your virtual travel assistant recommends: 
+        Cloudy, your virtual travel assistant recommends 
       </v-card-title>
       <v-card-text>
         {{ comparison === null ? 'Outside looking at the weather, one moment please' : comparison.prediction}}
       </v-card-text>
     </v-card>
-    <v-skeleton-loader type="card" class='ma-2 pa-2' v-if="comparison === null"></v-skeleton-loader>
+    <v-skeleton-loader type="card" class='pa-2' min-width="400" v-if="comparison === null"></v-skeleton-loader>
     <DisplayWeather  v-if="comparison !== null" :weather="comparison?.weather2" :location="secondaryLocation" />
   </div>
 

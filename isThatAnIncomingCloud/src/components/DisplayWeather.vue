@@ -30,7 +30,7 @@
 <v-card 
     v-if="weather?.current"
     class="mx-auto displayWeather"
-    max-width="512"
+    min-width="400"
   >
     <v-card-item :title="`${location.name}, ${ location.admin2 }${location.admin1 && location.admin2 ? ',' : '' } ${ location.admin1 }`" >
       <template v-slot:subtitle>
@@ -68,32 +68,19 @@
         <v-list-item-subtitle>{{ Math.round(weather?.current?.precipitation * 100) / 100 }} inches of precipitation</v-list-item-subtitle>
       </v-list-item>
     </div>
-
-    <v-expand-transition>
-      <div v-if="expand">
-        <v-list class="bg-transparent">
-          <v-list-item
-            v-for="item in weather?.forecast"
-            :key="item?.time"
-            :title="new Date(parseInt(item?.time)).toDateString()"
-            :subtitle="`${Math.floor(item?.minTemp)}&deg;F / ${Math.floor(item?.maxTemp)}&deg;F`"
-            :prependAvatar="iconImage(item?.weatherCode)" 
-          >
-            <v-row align="center" no-gutters>
-              {{item.weatherDescription}} with a {{ Math.floor(item?.precipitationChance) }}% chance of {{ (Math.round(item?.precipitationSum * 100) / 100) > 0 ? `${Math.round(item?.precipitationSum * 100) / 100 } inches of precipitation` :'precipitation'   }}
-            </v-row>
-          </v-list-item>
-        </v-list>
-      </div>
-    </v-expand-transition>
-
-    <v-divider></v-divider>
-
-    <v-card-actions>
-      <v-btn @click="expand = !expand">
-        {{ !expand ? 'Show Forecast' : 'Hide Forecast' }}
-      </v-btn>
-    </v-card-actions>
+    <v-list class="bg-transparent">
+      <v-list-item
+        v-for="item in weather?.forecast"
+        :key="item?.time"
+        :title="new Date(parseInt(item?.time)).toDateString()"
+        :subtitle="`${Math.floor(item?.minTemp)}&deg;F / ${Math.floor(item?.maxTemp)}&deg;F`"
+        :prependAvatar="iconImage(item?.weatherCode)" 
+      >
+        <v-row align="center" no-gutters>
+          {{item.weatherDescription}} with a {{ Math.floor(item?.precipitationChance) }}% chance of {{ (Math.round(item?.precipitationSum * 100) / 100) > 0 ? `${Math.round(item?.precipitationSum * 100) / 100 } inches of precipitation` :'precipitation'   }}
+        </v-row>
+      </v-list-item>
+    </v-list>
   </v-card>
 </template>
 
