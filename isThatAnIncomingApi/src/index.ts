@@ -111,7 +111,7 @@ await server.start();
 
 app.use(
   '/weather',
-  cors<cors.CorsRequest>({ origin: ['https://www.isThatAnIncoming.cloud', 'https://reddiky.github.io'] }),
+  cors<cors.CorsRequest>({ origin: ['https://isthatanincoming.cloud', 'https://reddiky.github.io'] }),
   express.json(),
   expressMiddleware(server, {
     context: async ({ req }) => ({ token: req.headers.token }),
